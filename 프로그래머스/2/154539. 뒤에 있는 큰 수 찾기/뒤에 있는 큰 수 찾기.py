@@ -1,6 +1,6 @@
 def solution(numbers):
     ans = []
-    stack = [numbers[-1]]
+    stack = []
 
     for num in numbers[::-1]:
         before = -1
