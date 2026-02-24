@@ -26,6 +26,7 @@ def solution(n, costs):
     costs.sort(key = lambda x:x[2])
     lst = []
     for s, e, c in costs:
+        if len(lst) == n - 1:break
         if not isConnect(s, e):
             lst.append([s, e, c])
     ans = 0
