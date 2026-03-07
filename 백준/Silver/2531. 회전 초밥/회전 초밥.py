@@ -1,4 +1,5 @@
-from collections import defaultdict
+import sys
+input = sys.stdin.readline
 
 n, d, k, c = map(int, input().split())
 lst = [int(input()) for _ in range(n)]
