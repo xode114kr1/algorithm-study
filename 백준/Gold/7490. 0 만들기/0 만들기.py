@@ -1,9 +1,14 @@
 z = int(input())
 
+def c_eval(s):
+    s = s.replace(" ", "")
+    s = s.replace("-", "+-")
+    l = list(map(int, s.split("+")))
+    return sum(l)
+
 def bt(idx, s): # idx 를 1부터 시작하자
     if idx == n:
-        t = s.replace(" ", "")
-        if eval(t) == 0:
+        if c_eval(s) == 0:
             print(s)
         return
 
