@@ -1,5 +1,6 @@
 import heapq
 import sys
+from collections import deque
 from heapq import heappush
 
 input = sys.stdin.readline
@@ -12,10 +13,10 @@ while 1:
     mat = [list(map(int, input().split())) for _ in range(n)]
     cnt_mat = [[float('inf')] * n for _ in range(n)]
     cnt_mat[0][0] = mat[0][0]
-    q = []  # x, y, cnt
-    heapq.heappush(q, (mat[0][0], 0, 0))
+    q = deque() # x, y, cnt
+    q.append((mat[0][0], 0, 0))
     while q:
-        cnt, cx, cy = heapq.heappop(q)
+        cnt, cx, cy = q.popleft()
         for dx, dy in direction:
             nx, ny = cx + dx, cy + dy
             if nx < 0 or ny < 0 or nx >= n or ny >= n:
@@ -23,6 +24,6 @@ while 1:
             n_cnt = cnt + mat[nx][ny]
             if n_cnt < cnt_mat[nx][ny]:
                 cnt_mat[nx][ny] = n_cnt
-                heappush(q, (n_cnt, nx, ny))
+                q.append((n_cnt, nx, ny))
     print(f"Problem {loof_cnt}: {cnt_mat[n - 1][n - 1]}")
     loof_cnt += 1
